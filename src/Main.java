@@ -4,7 +4,7 @@ public class Main {
         TranspositionEncryptor transpositionEncryptor = new TranspositionEncryptor();
 
         String secret = "secret message coming through";
-        transpositionEncryptor.encrypt(secret, 120);
+        transpositionEncryptor.encrypt(secret, 214);
 
         // String secret = "secret";
         // String encryptedSecret = substitutionEncrypter.encrypt(secret, 180);
