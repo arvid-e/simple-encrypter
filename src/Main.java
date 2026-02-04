@@ -4,18 +4,22 @@ public class Main {
         TranspositionEncryptor transpositionEncryptor = new TranspositionEncryptor();
 
         String secret = "secret message coming through";
-        String cipher = transpositionEncryptor.encrypt(secret, 214);
+        System.out.println("Message to encrypt: " + secret);
 
-        String decrypted = transpositionEncryptor.decrypt(cipher, 214);
-        System.out.println(decrypted);
+        System.out.println();
 
-        // String secret = "secret";
-        // String encryptedSecret = substitutionEncrypter.encrypt(secret, 180);
-        // System.out.println(encryptedSecret);
+        String transpositionCipher = transpositionEncryptor.encrypt(secret, 214);
+        System.out.println("Columnal transposition cipher: " + transpositionCipher);
 
-        // String decryptedSecret = substitutionEncrypter.decrypt(encryptedSecret, 180);
-        // System.out.println(decryptedSecret);
+        String decryptedTranspositionCipher = transpositionEncryptor.decrypt(transpositionCipher, 214);
+        System.out.println("Decrypted: " + decryptedTranspositionCipher);
 
-        
+        System.out.println();
+
+        String encryptedSubstitutionCipher = substitutionEncrypter.encrypt(secret, 180);
+        System.out.println("Simple substitution cipher: " + encryptedSubstitutionCipher);
+
+        String decryptedSubstitutionCipher = substitutionEncrypter.decrypt(encryptedSubstitutionCipher, 180);
+        System.out.println("Decrypted: " + decryptedSubstitutionCipher);
     }
 }
