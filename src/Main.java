@@ -4,7 +4,10 @@ public class Main {
         TranspositionEncryptor transpositionEncryptor = new TranspositionEncryptor();
 
         String secret = "secret message coming through";
-        transpositionEncryptor.encrypt(secret, 214);
+        String cipher = transpositionEncryptor.encrypt(secret, 214);
+
+        String decrypted = transpositionEncryptor.decrypt(cipher, 214);
+        System.out.println(decrypted);
 
         // String secret = "secret";
         // String encryptedSecret = substitutionEncrypter.encrypt(secret, 180);

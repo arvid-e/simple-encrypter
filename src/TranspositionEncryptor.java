@@ -2,24 +2,20 @@ import java.util.HashMap;
 
 public class TranspositionEncryptor {
     
-    public void encrypt(String message, int key) {
-
-        char[] messageChars = message.toCharArray();
-        Character[] transpositionArrayList = new Character[message.length()];
-
+    public String encrypt(String message, int key) {
         String keyString = String.valueOf(key);
-
         int blockSize = keyString.length();
-
-        int[] keyArr = new int[blockSize];
+        int[] keyDigits = new int[blockSize];
 
         while (message.length() % blockSize != 0) {
             message += " ";
         }
 
-        // creates a [2, 1, 4] array of key
+        char[] messageChars = message.toCharArray();
+        Character[] transpositionArrayList = new Character[message.length()];
+
         for (int i = 0; i < blockSize; i++) {
-            keyArr[i] = Character.getNumericValue(keyString.charAt(i)) -1;
+            keyDigits[i] = Character.getNumericValue(keyString.charAt(i)) -1;
         }
 
         // use hashmap because normal array gets out of bounds if a number in key is higher than the blocksize
@@ -30,16 +26,15 @@ public class TranspositionEncryptor {
 
         // sets to [6, 0, 12]
         for (int i = 0; i < blockSize; i++) {
-            int keyDigit = keyArr[i];
+            int keyDigit = keyDigits[i];
 
             currentIndexMap.put(keyDigit, rowIndex);
             rowIndex += rowAmount;
         }
 
         for (int i = 0; i < messageChars.length; i++) {
-
             int keyIndex = i % blockSize;
-            int keyDigit = keyArr[keyIndex];
+            int keyDigit = keyDigits[keyIndex];
             int rowIndexValue = currentIndexMap.get(keyDigit);
 
             transpositionArrayList[rowIndexValue] = messageChars[i];
@@ -48,12 +43,31 @@ public class TranspositionEncryptor {
             currentIndexMap.put(keyDigit, rowIndexValue);
         }
 
-        // Test
         String result = "";
         for (char character : transpositionArrayList) {
             result += character;
         }
+
+        return result;
+    }
+
+    public String decrypt(String cipher, int key) {
+        String keyString = String.valueOf(key);
+        int blockSize = keyString.length();
+        int rowAmount = cipher.length() / blockSize;
+        char[] resultArr = new char[cipher.length()];
+
+        for (int i = 0; i < cipher.length(); i++) {
+            int keyIndex = i % blockSize;
+            int keyDigit = Character.getNumericValue(keyString.charAt(keyIndex));
         
-        System.out.println(result);
+            int columnOrder = keyString.indexOf(String.valueOf(keyDigit));
+        
+            // Inverse of the encryption
+            int sourceIndex = (columnOrder * rowAmount) + (i / blockSize);
+            resultArr[i] = cipher.charAt(sourceIndex);
+        }
+
+        return new String(resultArr).trim();
     }
 }
