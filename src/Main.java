@@ -1,25 +1,36 @@
 public class Main {
     public static void main(String[] args) {
-        SubstitutionEncrypter substitutionEncrypter = new SubstitutionEncrypter();
-        TranspositionEncryptor transpositionEncryptor = new TranspositionEncryptor();
+        ConsoleIO consoleInputs = new ConsoleIO();
+        FileReader fileReader = new FileReader();
 
-        String secret = "secret message coming through";
-        System.out.println("Message to encrypt: " + secret);
+        CipherPayload cipherPayload = consoleInputs.getInputs();
+
+        String text = fileReader.readFile(cipherPayload.getFilename());
+
+        EncryptionService encryptionService;
+        if (cipherPayload.getCipher().equals("S")) {
+            encryptionService = new EncryptionService(
+                new SubstitutionEncrypter(), 
+                text, 
+                cipherPayload.getKey()
+            );
+        } else {
+            encryptionService = new EncryptionService(
+                new TranspositionEncryptor(), 
+                text, 
+                cipherPayload.getKey()
+            );
+        }
 
         System.out.println();
-
-        String transpositionCipher = transpositionEncryptor.encrypt(secret, 214);
-        System.out.println("Columnal transposition cipher: " + transpositionCipher);
-
-        String decryptedTranspositionCipher = transpositionEncryptor.decrypt(transpositionCipher, 214);
-        System.out.println("Decrypted: " + decryptedTranspositionCipher);
-
-        System.out.println();
-
-        String encryptedSubstitutionCipher = substitutionEncrypter.encrypt(secret, 180);
-        System.out.println("Simple substitution cipher: " + encryptedSubstitutionCipher);
-
-        String decryptedSubstitutionCipher = substitutionEncrypter.decrypt(encryptedSubstitutionCipher, 180);
-        System.out.println("Decrypted: " + decryptedSubstitutionCipher);
+        
+        String result;
+        if (cipherPayload.getEncryptOrDecrypt().equals("E")) {
+            result = encryptionService.encrypt();
+            fileReader.writeFile("encrypted-message.txt", result);
+        } else {
+            result = encryptionService.decrypt();
+            fileReader.writeFile("decrypted-message.txt", result);
+        }
     }
 }

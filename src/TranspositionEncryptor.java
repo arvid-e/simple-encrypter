@@ -6,7 +6,7 @@ import java.util.HashMap;
  * reading columns back out in the order of the digit values of the key,
  * e.g if key is 214 the order is column 1, 2, 4.
  */
-public class TranspositionEncryptor {
+public class TranspositionEncryptor implements Encryptor {
     
     /**
      * Encrypts a message using the provided numeric key.

@@ -12,11 +12,17 @@ javac -d bin src/*.java
 ```
 
 ### HOW TO RUN:
-From the project root, run:   
+
+1. Paste the file to encrypt or decrypt into the project root folder.
+
+2. From the project root, run:   
 
 ```
 java -cp bin Main
 ```
+3. Result is saved to file "result.txt"/
+
+
 
 
 ### NOTE: 

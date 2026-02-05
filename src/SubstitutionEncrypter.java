@@ -2,7 +2,7 @@
  * Class that performs simple substitution encryption and decryption 
  * using the ASCII table and a key up to the value 255 (8-bit).
  */
-public class SubstitutionEncrypter {
+public class SubstitutionEncrypter implements Encryptor {
 
     /**
      * Encrypts a message using the provided numeric key by shifting ASCII values to the right by the key value.
