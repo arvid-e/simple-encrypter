@@ -5,7 +5,7 @@ public class Main {
 
         CipherPayload cipherPayload = consoleInputs.getInputs();
 
-        String text = fileReader.readFile(cipherPayload.getFilename());
+        String text = fileReader.readFile(cipherPayload.getFilename()).trim();
 
         EncryptionService encryptionService;
         if (cipherPayload.getCipher().equals("S")) {
@@ -23,7 +23,7 @@ public class Main {
         }
 
         System.out.println();
-        
+
         String result;
         if (cipherPayload.getEncryptOrDecrypt().equals("E")) {
             result = encryptionService.encrypt();

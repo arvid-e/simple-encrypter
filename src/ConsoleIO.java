@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Class that handles all the needed console inputs.
+ */
 public class ConsoleIO {
     String encryptOrDecrypt;
     String cipherMethod;

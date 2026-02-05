@@ -28,3 +28,8 @@ java -cp bin Main
 ### NOTE: 
 No external libraries were used. 
 The program was developed using OpenJDK 21.
+
+
+4132
+
+76

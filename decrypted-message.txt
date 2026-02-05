@@ -1,1 +1,17 @@
-hello world
+***************************************************************************************************
+*                                                                                                 *
+*                                Secret message - Top Secret                                      *
+*                                                                                                 *
+*                      May only be read by security passed personnel                              *
+*                                                                                                 *
+***************************************************************************************************
+
+Substitution ciphers can be compared with transposition ciphers. In a transposition cipher, the units of the plaintext are rearranged in a different and usually quite complex order, but the units themselves are left unchanged. By contrast, in a substitution cipher, the units of the plaintext are retained in the same sequence in the ciphertext, but the units themselves are altered.
+
+There are a number of different types of substitution cipher. If the cipher operates on single letters, it is termed a simple substitution cipher; a cipher that operates on larger groups of letters is termed polygraphic. A monoalphabetic cipher uses fixed substitution over the entire message, whereas a polyalphabetic cipher uses a number of substitutions at different positions in the message, where a unit from the plaintext is mapped to one of several possibilities in the ciphertext and vice versa.
+
+The first ever published description of how to crack simple substitution ciphers was given by Al-Kindi in A Manuscript on Deciphering Cryptographic Messages written around 850 AD. The method he described is now known as frequency analysis.
+      
+      Arvid Edvinsson
+      
+***************************************************************************************************

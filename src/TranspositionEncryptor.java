@@ -5,6 +5,8 @@ import java.util.HashMap;
  * This cipher rearranges the plaintext by writing it into a grid and
  * reading columns back out in the order of the digit values of the key,
  * e.g if key is 214 the order is column 1, 2, 4.
+ * 
+ * Note: all digits in the key must be different!
  */
 public class TranspositionEncryptor implements Encryptor {
     
